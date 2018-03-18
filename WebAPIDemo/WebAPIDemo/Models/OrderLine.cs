@@ -9,18 +9,20 @@
 
 namespace WebAPIDemo.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class OrderLine
-    {
-        public int OrderId { get; set; }
-        public int LineNumber { get; set; }
-        public int ProductId { get; set; }
-        public decimal Qty { get; set; }
-        public decimal LineTotal { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
-    }
+	using System;
+	using System.Collections.Generic;
+	using Newtonsoft.Json;
+	public partial class OrderLine
+	{
+		public int OrderId { get; set; }
+		public int LineNumber { get; set; }
+		public int ProductId { get; set; }
+		public decimal Qty { get; set; }
+		public decimal LineTotal { get; set; }
+
+		[JsonIgnore]
+		public virtual Order Order { get; set; }
+		[JsonIgnore]
+		public virtual Product Product { get; set; }
+	}
 }

@@ -25,10 +25,33 @@ namespace WebAPIDemo.Controllers
 		/// 取得所有商品
 		/// </summary>
 		/// <returns></returns>
-		// GET: api/Products
+		[Route("prod")]
 		public IQueryable<Product> Get() //預設只要用Get就可以與controller
 		{
 			return db.Product.OrderByDescending(x => x.ProductId).Take(10);
+		}
+
+		[Route("prod/v2/{id:int=5}")]
+		[ResponseType(typeof(Product))]
+		public IHttpActionResult GetProductV2(int id)
+		{
+			Product product = db.Product.Find(id);
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(product);
+		}
+
+		/// <summary>
+		/// 新的 取得所有商品 順序
+		/// </summary>
+		/// <returns></returns>
+		[Route("prod/v2")]
+		public IQueryable<Product> GetProducts() //預設只要用Get就可以與controller
+		{
+			return db.Product.OrderBy(x => x.ProductId).Take(10);
 		}
 
 		/// <summary>
@@ -37,6 +60,7 @@ namespace WebAPIDemo.Controllers
 		/// <param name="id">產品id</param>
 		/// <returns></returns>
 		// GET: api/Products/5
+		[Route("prod/{id:int=5}")]
 		[ResponseType(typeof(Product))]
 		public IHttpActionResult GetProduct(int id)
 		{
@@ -47,6 +71,19 @@ namespace WebAPIDemo.Controllers
 			}
 
 			return Ok(product);
+		}
+
+		[Route("prod/{id:int}/orderlines")]
+		[ResponseType(typeof(Product))]
+		public IHttpActionResult GetProductOrderlines(int id)
+		{
+			Product product = db.Product.Include("OrderLine").FirstOrDefault(x => x.ProductId == id);
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(product.OrderLine.ToList());
 		}
 
 		// PUT: api/Products/5

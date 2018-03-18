@@ -21,12 +21,21 @@ namespace WebAPIDemo.Controllers
 			db.Configuration.LazyLoadingEnabled = false; //由於內部的model互相有關連，所以會不停的重複去找同樣的東西
 		}
 
+		/// <summary>
+		/// 取得所有商品
+		/// </summary>
+		/// <returns></returns>
 		// GET: api/Products
 		public IQueryable<Product> Get() //預設只要用Get就可以與controller
 		{
 			return db.Product.OrderByDescending(x => x.ProductId).Take(10);
 		}
 
+		/// <summary>
+		/// 取得單一商品
+		/// </summary>
+		/// <param name="id">產品id</param>
+		/// <returns></returns>
 		// GET: api/Products/5
 		[ResponseType(typeof(Product))]
 		public IHttpActionResult GetProduct(int id)

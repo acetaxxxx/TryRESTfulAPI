@@ -16,6 +16,11 @@ namespace WebAPIDemo.Controllers
 	{
 		private FabricsEntities db = new FabricsEntities();
 
+		public ProductsController()
+		{
+			db.Configuration.LazyLoadingEnabled = false; //為了不要導覽
+		}
+
 		// GET: api/Products
 		public IQueryable<Product> GetProduct()
 		{

@@ -481,5 +481,18 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:WebAPIDemo.Controllers.ProductsController.Get">
+            <summary>
+            取得所有商品
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPIDemo.Controllers.ProductsController.GetProduct(System.Int32)">
+            <summary>
+            取得單一商品
+            </summary>
+            <param name="id">產品id</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

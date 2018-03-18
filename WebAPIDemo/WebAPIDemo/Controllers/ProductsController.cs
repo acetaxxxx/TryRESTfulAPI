@@ -18,11 +18,11 @@ namespace WebAPIDemo.Controllers
 
 		public ProductsController()
 		{
-			db.Configuration.LazyLoadingEnabled = false; //為了不要導覽
+			db.Configuration.LazyLoadingEnabled = false; //由於內部的model互相有關連，所以會不停的重複去找同樣的東西
 		}
 
 		// GET: api/Products
-		public IQueryable<Product> GetProduct()
+		public IQueryable<Product> Get() //預設只要用Get就可以與controller
 		{
 			return db.Product.OrderByDescending(x => x.ProductId).Take(10);
 		}

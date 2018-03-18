@@ -12,9 +12,9 @@ namespace WebAPIDemo
 			// Web API configuration and services
 
 			// Web API routes
-			config.MapHttpAttributeRoutes();
+			config.MapHttpAttributeRoutes();//attribute  route
 
-			config.Routes.MapHttpRoute(
+			config.Routes.MapHttpRoute(//傳統的route
 				name: "DefaultApi" ,
 				routeTemplate: "api/{controller}/{id}" ,
 				defaults: new { id = RouteParameter.Optional }

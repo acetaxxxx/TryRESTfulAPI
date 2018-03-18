@@ -487,6 +487,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WebAPIDemo.Controllers.ProductsController.GetProducts">
+            <summary>
+            新的 取得所有商品 順序
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WebAPIDemo.Controllers.ProductsController.GetProduct(System.Int32)">
             <summary>
             取得單一商品
